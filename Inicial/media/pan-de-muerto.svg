@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 480" role="img" aria-labelledby="title desc">
+  <title id="title">Pan de muerto</title>
+  <desc id="desc">Ilustração original de um pão doce mexicano polvilhado com açúcar e decorado com ossinhos de massa.</desc>
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#f8d6a0"/><stop offset="1" stop-color="#9c6e5c"/></linearGradient>
+    <linearGradient id="bread" x2="0" y2="1"><stop stop-color="#f7c878"/><stop offset="1" stop-color="#bf7137"/></linearGradient>
+  </defs>
+  <rect width="700" height="480" fill="url(#bg)"/>
+  <ellipse cx="350" cy="369" rx="246" ry="51" fill="#f7eee1"/>
+  <circle cx="350" cy="277" r="129" fill="url(#bread)" stroke="#a9562e" stroke-width="9"/>
+  <g fill="none" stroke="#ffe3a8" stroke-width="25" stroke-linecap="round">
+    <path d="M350 271V166"/><path d="M350 282l-75 74"/><path d="M350 282l75 74"/>
+  </g>
+  <g fill="#ffe3a8">
+    <circle cx="350" cy="160" r="19"/><circle cx="350" cy="184" r="17"/>
+    <circle cx="267" cy="365" r="18"/><circle cx="284" cy="347" r="17"/>
+    <circle cx="433" cy="365" r="18"/><circle cx="416" cy="347" r="17"/>
+  </g>
+  <g fill="#fff5df" opacity=".9"><circle cx="310" cy="240" r="5"/><circle cx="389" cy="220" r="6"/><circle cx="398" cy="300" r="5"/><circle cx="301" cy="315" r="6"/><circle cx="350" cy="327" r="5"/></g>
+  <text x="350" y="78" text-anchor="middle" fill="#315b43" font-family="Georgia,serif" font-size="50" font-weight="bold">PAN DE MUERTO</text>
+  <text x="350" y="119" text-anchor="middle" fill="#714b3f" font-family="Arial,sans-serif" font-size="18" letter-spacing="4">TRADIÇÃO MEXICANA</text>
+</svg>

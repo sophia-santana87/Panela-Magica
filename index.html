@@ -206,6 +206,10 @@
         .recipe-steps li { padding-left: 5px; margin-bottom: 12px; color: #50594e; }
         .recipe-meta { display: flex; flex-wrap: wrap; gap: 9px; margin: 14px 0; }
         .recipe-meta span { padding: 6px 10px; border-radius: 999px; background: #eff5eb; color: var(--green); font-size: 12px; font-weight: 700; }
+        .audio-guide { margin-top: 22px; padding: 16px; border: 1px solid var(--line); border-radius: 14px; background: #f8f3e8; }
+        .audio-guide strong { color: var(--green-dark); }
+        .audio-guide audio { display: block; width: 100%; margin-top: 10px; }
+        .audio-transcript { margin: 10px 0 0; color: var(--muted); font-size: 13px; }
         .home-link { display: inline-block; margin-top: 22px; color: var(--tomato); font-weight: 700; text-decoration: none; }
         .home-link:hover { text-decoration: underline; }
 
@@ -293,6 +297,24 @@
                     <h3>Bolinho no vapor</h3>
                     <p>Massa macia com recheio temperado.</p>
                 </a>
+                <a class="card-filme" href="#receita-arepas" onclick="navegar('receita-arepas'); return false;" data-search="arepas queijo encanto julieta colombia milho">
+                    <img src="media/arepas.svg" alt="Ilustração de arepas de milho recheadas com queijo">
+                    <span class="card-tag">Encanto · Colômbia</span>
+                    <h3>Arepas con queso</h3>
+                    <p>Arepas douradas recheadas com queijo derretido.</p>
+                </a>
+                <a class="card-filme" href="#receita-pan-muerto" onclick="navegar('receita-pan-muerto'); return false;" data-search="pan de muerto coco dia dos mortos pão doce mexicano">
+                    <img src="media/pan-de-muerto.svg" alt="Ilustração de pan de muerto polvilhado com açúcar">
+                    <span class="card-tag">Coco · México</span>
+                    <h3>Pan de muerto</h3>
+                    <p>Pão doce cítrico para compartilhar em família.</p>
+                </a>
+                <a class="card-filme" href="#receita-onigiri" onclick="navegar('receita-onigiri'); return false;" data-search="onigiri viagem de chihiro spirited away arroz japonês">
+                    <img src="media/onigiri.svg" alt="Ilustração de onigiri de arroz com alga nori">
+                    <span class="card-tag">A Viagem de Chihiro · Japão</span>
+                    <h3>Onigiri da Chihiro</h3>
+                    <p>Bolinhos de arroz japoneses simples e reconfortantes.</p>
+                </a>
             </div>
             <p class="no-results" role="status">Não encontrei receitas ou filmes com esse termo. Tente outra busca.</p>
         </div>
@@ -316,9 +338,13 @@
 
                     <p><strong>Contexto na Narrativa:</strong> Este é o exato momento em que o rigoroso crítico Anton Ego prova a receita camponesa preparada pelo rato Remy. Ao dar a primeira mordida, a caneta cai de sua mão e ele é transportado para as memórias afetivas de sua infância no interior da França.</p>
 
-                    <div style="margin-top: 20px;">
-                        <strong>Pílula de Áudio: Dica Mágica do Chef</strong><br>
-                        <audio controls preload="none" style="margin-top: 10px; width: 100%;"></audio>
+                    <div class="audio-guide">
+                        <strong>Pílula de áudio: dica mágica do chef</strong>
+                        <audio controls preload="metadata" aria-label="Dica de preparo do ratatouille narrada em português">
+                            <source src="media/ratatouille-dica.wav" type="audio/wav">
+                            Seu navegador não consegue reproduzir este áudio. Leia a transcrição abaixo.
+                        </audio>
+                        <p class="audio-transcript"><strong>Transcrição:</strong> Para assar por igual, corte os legumes em rodelas de espessura parecida. Organize as fatias sobre o molho, cubra com papel-manteiga e asse a 180 °C até ficarem macias. Retire o papel nos minutos finais para dourar.</p>
                     </div>
                 </div>
 
@@ -499,6 +525,97 @@
                         <li>Refogue os cogumelos, o alho e a cebolinha. Tempere com molho de soja, óleo de gergelim e pimenta; deixe esfriar.</li>
                         <li>Divida a massa em 12 porções, abra discos e coloque uma colher de recheio no centro. Feche e acomode sobre quadrados de papel-manteiga.</li>
                         <li>Deixe crescer por 15 minutos e cozinhe no vapor, com espaço entre os bolinhos, por cerca de 12 minutos.</li>
+                    </ol>
+                </section>
+            </div>
+            <a class="home-link" href="#tela1" onclick="navegar('tela1'); return false;">← Voltar para a tela inicial</a>
+        </div>
+
+        <div id="receita-arepas" class="screen">
+            <nav class="breadcrumbs"><a href="#tela1" onclick="navegar('tela1'); return false;">Início</a> &gt; Arepas con queso</nav>
+            <button class="btn-voltar" onclick="navegar('tela1')">← Voltar à Estante</button>
+            <span class="system-status">Cozinha colombiana · Rende 6 arepas</span>
+            <h2>Arepas con queso</h2>
+            <p>Inspiradas nas arepas com queijo preparadas por Julieta em <a class="movie-link" href="https://en.wikipedia.org/wiki/Encanto" target="_blank" rel="noopener noreferrer">Encanto</a>.</p>
+            <div class="recipe-meta"><span>Preparo: 15 min</span><span>Descanso: 5 min</span><span>Frigideira: 20 min</span></div>
+            <div class="recipe-grid">
+                <section class="recipe-panel">
+                    <h3>Ingredientes</h3>
+                    <div class="checklist-item"><input type="checkbox"> 2 xícaras (300 g) de masarepa, farinha de milho pré-cozida própria para arepas</div>
+                    <div class="checklist-item"><input type="checkbox"> 2½ xícaras (600 ml) de água morna</div>
+                    <div class="checklist-item"><input type="checkbox"> 1 colher de chá de sal</div>
+                    <div class="checklist-item"><input type="checkbox"> 1 colher de sopa de manteiga derretida</div>
+                    <div class="checklist-item"><input type="checkbox"> 200 g de queijo muçarela ralado</div>
+                    <div class="checklist-item"><input type="checkbox"> Um pouco de manteiga ou óleo para dourar</div>
+                </section>
+                <section class="recipe-panel">
+                    <h3>Modo de preparo</h3>
+                    <ol class="recipe-steps">
+                        <li>Misture a água morna, o sal e a manteiga. Acrescente a masarepa aos poucos, mexendo para não formar grumos.</li>
+                        <li>Deixe a massa hidratar por 5 minutos. Ela deve ficar macia e moldável; se rachar, junte um pouco mais de água.</li>
+                        <li>Divida em 6 porções. Abra cada uma na palma da mão, recheie com queijo e feche, formando discos de cerca de 1,5 cm.</li>
+                        <li>Doure em frigideira untada, em fogo médio-baixo, por 5 a 7 minutos de cada lado. Sirva quentes.</li>
+                    </ol>
+                </section>
+            </div>
+            <a class="home-link" href="#tela1" onclick="navegar('tela1'); return false;">← Voltar para a tela inicial</a>
+        </div>
+
+        <div id="receita-pan-muerto" class="screen">
+            <nav class="breadcrumbs"><a href="#tela1" onclick="navegar('tela1'); return false;">Início</a> &gt; Pan de muerto</nav>
+            <button class="btn-voltar" onclick="navegar('tela1')">← Voltar à Estante</button>
+            <span class="system-status">Pão doce mexicano · Rende 1 pão grande</span>
+            <h2>Pan de muerto</h2>
+            <p>Uma versão caseira do tradicional pão mexicano associado à celebração familiar retratada em <a class="movie-link" href="https://en.wikipedia.org/wiki/Coco_(2017_film)" target="_blank" rel="noopener noreferrer">Coco</a>.</p>
+            <div class="recipe-meta"><span>Preparo: 30 min</span><span>Descanso: 2 h</span><span>Forno: 25 min</span></div>
+            <div class="recipe-grid">
+                <section class="recipe-panel">
+                    <h3>Ingredientes</h3>
+                    <div class="checklist-item"><input type="checkbox"> 500 g de farinha de trigo</div>
+                    <div class="checklist-item"><input type="checkbox"> 7 g de fermento biológico seco e 100 g de açúcar</div>
+                    <div class="checklist-item"><input type="checkbox"> 3 ovos e 120 ml de leite morno</div>
+                    <div class="checklist-item"><input type="checkbox"> Raspas de 1 laranja e 1 colher de chá de água de flor de laranjeira (opcional)</div>
+                    <div class="checklist-item"><input type="checkbox"> 100 g de manteiga macia e 1 colher de chá de sal</div>
+                    <div class="checklist-item"><input type="checkbox"> 1 ovo para pincelar e açúcar para finalizar</div>
+                </section>
+                <section class="recipe-panel">
+                    <h3>Modo de preparo</h3>
+                    <ol class="recipe-steps">
+                        <li>Misture o leite, o fermento e uma colher do açúcar. Aguarde 5 minutos, até espumar.</li>
+                        <li>Junte farinha, o restante do açúcar, sal, ovos, raspas e água de flor de laranjeira. Sove e incorpore a manteiga aos poucos.</li>
+                        <li>Sove até a massa ficar elástica. Cubra e deixe crescer até dobrar de volume, por cerca de 1 hora e meia.</li>
+                        <li>Reserve um pedaço para decorar. Forme uma bola, modele tiras com nós para representar ossinhos e coloque sobre o pão. Deixe crescer mais 30 minutos.</li>
+                        <li>Pincele com ovo e asse a 180 °C por 25 a 30 minutos. Quando amornar, pincele manteiga derretida e passe no açúcar.</li>
+                    </ol>
+                </section>
+            </div>
+            <a class="home-link" href="#tela1" onclick="navegar('tela1'); return false;">← Voltar para a tela inicial</a>
+        </div>
+
+        <div id="receita-onigiri" class="screen">
+            <nav class="breadcrumbs"><a href="#tela1" onclick="navegar('tela1'); return false;">Início</a> &gt; Onigiri da Chihiro</nav>
+            <button class="btn-voltar" onclick="navegar('tela1')">← Voltar à Estante</button>
+            <span class="system-status">Lanche japonês · Rende 6 unidades</span>
+            <h2>Onigiri da Chihiro</h2>
+            <p>Um lanche de arroz inspirado no momento acolhedor de <a class="movie-link" href="https://en.wikipedia.org/wiki/Spirited_Away" target="_blank" rel="noopener noreferrer">A Viagem de Chihiro</a>.</p>
+            <div class="recipe-meta"><span>Preparo: 20 min</span><span>Cozimento do arroz: 20 min</span><span>Rende: 6</span></div>
+            <div class="recipe-grid">
+                <section class="recipe-panel">
+                    <h3>Ingredientes</h3>
+                    <div class="checklist-item"><input type="checkbox"> 2 xícaras (360 g) de arroz japonês de grão curto</div>
+                    <div class="checklist-item"><input type="checkbox"> 2½ xícaras de água para cozinhar</div>
+                    <div class="checklist-item"><input type="checkbox"> 1 lata pequena de atum escorrido ou 6 umeboshi sem caroço</div>
+                    <div class="checklist-item"><input type="checkbox"> 2 colheres de sopa de maionese (opcional, para o atum)</div>
+                    <div class="checklist-item"><input type="checkbox"> Sal a gosto e água para umedecer as mãos</div>
+                    <div class="checklist-item"><input type="checkbox"> 3 folhas de nori cortadas em tiras</div>
+                </section>
+                <section class="recipe-panel">
+                    <h3>Modo de preparo</h3>
+                    <ol class="recipe-steps">
+                        <li>Lave o arroz até a água sair quase transparente. Cozinhe com a água e deixe descansar tampado por 10 minutos.</li>
+                        <li>Se usar atum, misture-o com a maionese. Mantenha o arroz morno para moldar com mais facilidade.</li>
+                        <li>Umedeça as mãos e salpique um pouco de sal. Coloque arroz na palma, acrescente o recheio e cubra com mais arroz.</li>
+                        <li>Modele em triângulo sem apertar demais. Envolva a base com uma tira de nori e sirva em seguida.</li>
                     </ol>
                 </section>
             </div>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 480" role="img" aria-labelledby="title desc">
+  <title id="title">Onigiri da Chihiro</title>
+  <desc id="desc">Ilustração original de bolinhos triangulares de arroz japonês com tiras de alga nori.</desc>
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#d8e6d1"/><stop offset="1" stop-color="#829b7c"/></linearGradient>
+    <linearGradient id="rice" x2="0" y2="1"><stop stop-color="#fffef4"/><stop offset="1" stop-color="#dedcc7"/></linearGradient>
+  </defs>
+  <rect width="700" height="480" fill="url(#bg)"/>
+  <ellipse cx="350" cy="362" rx="248" ry="64" fill="#f7f1e5"/>
+  <g fill="url(#rice)" stroke="#b7b5a4" stroke-width="8" stroke-linejoin="round">
+    <path d="M168 319 263 166q15-24 30 0l96 153q12 21-14 23H182q-27-2-14-23Z"/>
+    <path d="m333 308 88-143q15-24 30 0l94 143q12 22-14 24H347q-27-2-14-24Z"/>
+  </g>
+  <path d="m211 303 29-48h64l31 48v35H211Z" fill="#29433a"/>
+  <path d="m373 296 26-43h68l31 43v40H373Z" fill="#29433a"/>
+  <g fill="#fff"><circle cx="250" cy="220" r="4"/><circle cx="277" cy="244" r="4"/><circle cx="444" cy="212" r="4"/><circle cx="466" cy="236" r="4"/></g>
+  <text x="350" y="79" text-anchor="middle" fill="#315b43" font-family="Georgia,serif" font-size="48" font-weight="bold">ONIGIRI</text>
+  <text x="350" y="121" text-anchor="middle" fill="#4c6550" font-family="Arial,sans-serif" font-size="19" letter-spacing="4">UM LANCHE RECONFORTANTE</text>
+</svg>
