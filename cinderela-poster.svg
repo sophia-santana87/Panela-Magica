@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 850" role="img" aria-labelledby="title desc">
+  <title id="title">Cinderela</title>
+  <desc id="desc">Ilustração original de uma abóbora e um sapatinho de cristal sob o céu noturno.</desc>
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#152452"/><stop offset=".7" stop-color="#495b9b"/><stop offset="1" stop-color="#20294b"/></linearGradient>
+    <linearGradient id="pumpkin" x2="0" y2="1"><stop stop-color="#ffc76b"/><stop offset="1" stop-color="#d66c2f"/></linearGradient>
+  </defs>
+  <rect width="600" height="850" fill="url(#bg)"/>
+  <g fill="#fff3cf" opacity=".8"><circle cx="90" cy="111" r="3"/><circle cx="490" cy="156" r="3"/><circle cx="147" cy="258" r="2"/><circle cx="438" cy="290" r="2"/></g>
+  <path d="M0 566Q100 512 212 560t208-2 180 8V850H0Z" fill="#18213e"/>
+  <g transform="translate(0 15)">
+    <ellipse cx="300" cy="537" rx="108" ry="96" fill="url(#pumpkin)"/>
+    <ellipse cx="258" cy="537" rx="51" ry="91" fill="#f09a42"/>
+    <ellipse cx="342" cy="537" rx="51" ry="91" fill="#e98538"/>
+    <path d="M300 447q-9-42 13-58 20 12 10 58" fill="#657f48"/>
+  </g>
+  <path d="M265 390q44-62 91-15l30 49q-39 24-91 8l-33-17Z" fill="#e8f6ff" fill-opacity=".83" stroke="#fff" stroke-width="8"/>
+  <path d="M293 404l48-23m-33 53 49-26" stroke="#b7d6f3" stroke-width="7"/>
+  <text x="300" y="704" text-anchor="middle" fill="#fff6db" font-family="Georgia,serif" font-size="64" font-weight="bold">CINDERELA</text>
+  <text x="300" y="754" text-anchor="middle" fill="#c9dcff" font-family="Arial,sans-serif" font-size="20" letter-spacing="5">A MAGIA DA ABÓBORA</text>
+</svg>

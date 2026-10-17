@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 450" role="img" aria-labelledby="title desc">
+  <title id="title">A transformação da abóbora</title>
+  <desc id="desc">Ilustração original de uma abóbora transformada em carruagem sob um céu estrelado.</desc>
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#142653"/><stop offset="1" stop-color="#6476aa"/></linearGradient></defs>
+  <rect width="1200" height="450" fill="url(#bg)"/>
+  <g fill="#fff5d6" opacity=".8"><circle cx="120" cy="91" r="4"/><circle cx="950" cy="92" r="4"/><circle cx="1060" cy="187" r="3"/><circle cx="783" cy="67" r="3"/></g>
+  <path d="M0 354q200-62 400 0t400 0 400 0v96H0Z" fill="#202846"/>
+  <path d="M400 283q10-132 200-132t200 132v52H400Z" fill="#f2ae55" stroke="#ffe3a5" stroke-width="10"/>
+  <path d="M475 205h250v103H475Z" fill="#b5d7f4" fill-opacity=".75" stroke="#fff0cf" stroke-width="8"/>
+  <path d="M430 326h340" stroke="#d5a75b" stroke-width="20"/>
+  <circle cx="480" cy="353" r="42" fill="#263352" stroke="#e7c477" stroke-width="14"/><circle cx="720" cy="353" r="42" fill="#263352" stroke="#e7c477" stroke-width="14"/>
+  <path d="M599 147q-13-40 16-58 30 18 10 60" fill="#7c9b60"/>
+  <text x="70" y="91" fill="#fff7de" font-family="Georgia,serif" font-size="42">À MEIA-NOITE, A MAGIA ACONTECE</text>
+  <text x="70" y="139" fill="#d7e5ff" font-family="Arial,sans-serif" font-size="22" letter-spacing="4">CENA DE CINDERELA</text>
+</svg>
