@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 480" role="img" aria-labelledby="title desc">
+  <title id="title">Beignets da Tiana</title>
+  <desc id="desc">Ilustração original de beignets dourados cobertos com açúcar de confeiteiro.</desc>
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#f7dca8"/><stop offset="1" stop-color="#b86e49"/></linearGradient><linearGradient id="dough" x2="0" y2="1"><stop stop-color="#ffe0a1"/><stop offset="1" stop-color="#d68a3f"/></linearGradient></defs>
+  <rect width="700" height="480" fill="url(#bg)"/>
+  <ellipse cx="350" cy="354" rx="260" ry="78" fill="#f7edda"/>
+  <g fill="url(#dough)" stroke="#ba7139" stroke-width="7">
+    <rect x="168" y="225" width="150" height="105" rx="18" transform="rotate(-12 243 278)"/>
+    <rect x="300" y="205" width="160" height="112" rx="20" transform="rotate(8 380 261)"/>
+    <rect x="425" y="240" width="130" height="93" rx="17" transform="rotate(-8 490 286)"/>
+    <rect x="250" y="296" width="155" height="85" rx="18" transform="rotate(5 327 338)"/>
+  </g>
+  <g fill="#fff9e9"><circle cx="211" cy="252" r="5"/><circle cx="253" cy="276" r="6"/><circle cx="335" cy="231" r="5"/><circle cx="392" cy="270" r="6"/><circle cx="471" cy="266" r="5"/><circle cx="309" cy="333" r="6"/></g>
+  <text x="350" y="95" text-anchor="middle" fill="#315b43" font-family="Georgia,serif" font-size="44" font-weight="bold">BEIGNETS DA TIANA</text>
+  <text x="350" y="139" text-anchor="middle" fill="#7b4832" font-family="Arial,sans-serif" font-size="18" letter-spacing="4">UM DOCE DE NOVA ORLEANS</text>
+</svg>

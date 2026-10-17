@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 450" role="img" aria-labelledby="title desc">
+  <title id="title">Jantar no castelo encantado</title>
+  <desc id="desc">Ilustração original de uma mesa de jantar iluminada por velas e uma rosa.</desc>
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#211c38"/><stop offset="1" stop-color="#6c3b47"/></linearGradient></defs>
+  <rect width="1200" height="450" fill="url(#bg)"/>
+  <path d="M0 315H1200v135H0Z" fill="#39232d"/>
+  <path d="M280 314V121m620 193V121" stroke="#dbb969" stroke-width="12"/>
+  <g fill="#f4c966"><path d="M260 150q20-48 40 0v26h-40Z"/><path d="M880 150q20-48 40 0v26h-40Z"/></g>
+  <path d="M360 290q235-64 480 0l-45 47H405Z" fill="#9c623d"/><path d="M424 337v91m350-91v91" stroke="#683d31" stroke-width="25"/>
+  <path d="M600 282V191" stroke="#70905c" stroke-width="11"/>
+  <g fill="#c43854"><ellipse cx="600" cy="175" rx="21" ry="41"/><ellipse cx="576" cy="188" rx="30" ry="20"/><ellipse cx="624" cy="188" rx="30" ry="20"/></g>
+  <text x="70" y="91" fill="#fff2d2" font-family="Georgia,serif" font-size="42">UM BANQUETE ENCANTADO</text>
+  <text x="70" y="139" fill="#e9c572" font-family="Arial,sans-serif" font-size="22" letter-spacing="4">CENA DE A BELA E A FERA</text>
+</svg>
