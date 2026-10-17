@@ -5,303 +5,296 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panela Mágica - Protótipo Hipermidiático</title>
     <style>
+        :root {
+            color-scheme: light;
+            --cream: #fffaf1;
+            --paper: #fffdf8;
+            --ink: #283329;
+            --muted: #687366;
+            --green: #315b43;
+            --green-dark: #214331;
+            --tomato: #bd563e;
+            --gold: #e7b85c;
+            --line: #eadfce;
+            --shadow: 0 14px 34px rgba(48, 55, 38, 0.09);
+        }
+
+        * { box-sizing: border-box; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            background:
+                radial-gradient(ellipse at 8% 10%, rgba(231,184,92,.12), transparent 30rem),
+                var(--cream);
+            color: var(--ink);
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            line-height: 1.6;
         }
 
         header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 5;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 14px max(28px, calc((100% - 1180px) / 2));
+            background: rgba(33, 67, 49, .97);
+            box-shadow: 0 4px 20px rgba(21, 43, 30, .18);
+            color: #fffaf1;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
+        header h1 { margin: 0; font: 700 25px/1.2 Georgia, serif; }
+        header h1, header h1 a { color: #fffaf1; }
+        header h1 a { text-decoration: none; }
+        header h1 a:hover { color: #f3d38f; }
 
         .search-bar {
-            padding: 8px 15px;
-            border-radius: 20px;
-            border: none;
-            width: 250px;
+            width: min(320px, 38vw);
+            padding: 11px 16px;
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: 999px;
             outline: none;
+            background: rgba(255,255,255,.12);
+            color: white;
+            font: inherit;
         }
 
-        .container {
-            padding: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .search-bar::placeholder { color: #e0e6dc; }
+        .search-bar:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(231,184,92,.2); }
 
-        .screen {
-            display: none;
-            animation: fadeIn 0.4s;
-        }
-
-        .screen.active {
-            display: block;
-        }
+        .container { width: min(1180px, 100%); margin: auto; padding: 44px 28px 72px; }
+        .screen { display: none; animation: fadeIn .35s ease both; }
+        .screen.active { display: block; }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .breadcrumbs {
-            font-size: 14px;
-            color: #7f8c8d;
-            margin-bottom: 15px;
-        }
-
-        .breadcrumbs a {
-            color: #e74c3c;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .breadcrumbs a:hover {
-            text-decoration: underline;
-        }
+        h1, h2, h3, h4 { color: var(--green-dark); font-family: Georgia, "Times New Roman", serif; line-height: 1.2; }
+        h2 { margin: 8px 0 12px; font-size: clamp(30px, 4vw, 42px); }
+        h3 { margin: 12px 0 8px; }
+        p { color: #50594e; }
+        .breadcrumbs { margin-bottom: 18px; color: var(--muted); font-size: 14px; }
+        .breadcrumbs a, .movie-link { color: var(--tomato); font-weight: 700; text-decoration: none; }
+        .breadcrumbs a:hover, .movie-link:hover { text-decoration: underline; }
 
         .system-status {
-            display: inline-block;
-            background: #eef6f2;
-            color: #1f7a4d;
-            padding: 6px 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 13px;
+            border: 1px solid #d8e3d5;
             border-radius: 999px;
+            background: #eff5eb;
+            color: var(--green);
             font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: .04em;
+            text-transform: uppercase;
         }
+
+        .system-status::before { width: 8px; height: 8px; border-radius: 50%; background: #6c9b62; content: ""; }
+        .home-intro { max-width: 660px; margin-bottom: 34px; }
+        .home-intro p { margin: 0; font-size: 17px; }
+        .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin: 42px 0 14px; }
+        .section-heading h2 { margin: 0; font-size: 28px; }
+        .section-heading p { margin: 0; font-size: 14px; }
 
         .grid-estante {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 30px;
+            gap: 22px;
             margin-top: 20px;
         }
 
         .card-filme {
-            background: white;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card-filme:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
-            border-bottom: 4px solid #e74c3c;
-        }
-
-        .capa-placeholder {
-            background-color: #ddd;
-            height: 300px;
-            border-radius: 4px;
-            margin-bottom: 15px;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #777;
-            font-weight: bold;
-            font-size: 18px;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 12px;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: var(--paper);
+            box-shadow: 0 5px 18px rgba(48,55,38,.05);
+            color: inherit;
+            text-align: left;
+            text-decoration: none;
+            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
         }
 
-        .card-filme img,
-        .media-frame img {
+        .card-filme:hover, .card-filme:focus-visible {
+            transform: translateY(-5px);
+            border-color: #d8b96c;
+            box-shadow: var(--shadow);
+            outline: none;
+        }
+
+        .card-filme[hidden] { display: none; }
+
+        .card-filme img {
             display: block;
             width: 100%;
-            height: 220px;
+            height: 205px;
+            margin: 0;
+            border-radius: 12px;
             object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
         }
 
-        .media-frame img {
-            height: 180px;
+        .card-filme h3 { margin: 15px 7px 3px; font-size: 20px; }
+        .card-filme p { margin: 0 7px 9px; font-size: 13px; }
+        .card-tag { margin: 10px 7px 0; color: var(--tomato); font-size: 11px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+        .no-results { display: none; padding: 20px; border-radius: 12px; background: #f5eee1; color: var(--muted); }
+
+        .scene-video-container, .coluna-esquerda, .coluna-direita, .coluna, .recipe-panel {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: var(--paper);
+            box-shadow: 0 8px 26px rgba(48,55,38,.06);
         }
 
-        .video-placeholder {
-            background-color: #111;
-            height: 450px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            font-weight: bold;
-        }
+        .scene-video-container { padding: 12px; margin: 20px 0 26px; }
+        .scene-video { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 12px; background: #111; }
+        .scene-preview { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 12px; background: #111; }
+        .scene-preview img { width: 100%; height: 100%; object-fit: cover; }
+        .scene-preview-label { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); padding: 12px 18px; border-radius: 999px; background: rgba(0,0,0,.78); color: white; font-weight: 700; white-space: nowrap; }
+        .scene-local-notice { margin: 8px 4px 0; color: var(--muted); font-size: 13px; }
+        .scene-source { display: block; margin: 8px 4px 0; color: var(--tomato); font-size: 13px; text-align: right; }
+        .layout-cena { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(230px, 1fr); gap: 22px; }
+        .coluna-esquerda, .coluna-direita, .coluna, .recipe-panel { padding: 24px; }
+        .coluna-direita { text-align: center; }
+        .media-frame img { display: block; width: 100%; height: 190px; border-radius: 12px; object-fit: cover; }
 
         .btn-voltar {
-            background: none;
-            border: none;
-            color: #e74c3c;
-            font-weight: bold;
+            margin: 2px 0 16px;
+            padding: 9px 0;
+            border: 0;
+            background: transparent;
+            color: var(--green);
             cursor: pointer;
-            font-size: 16px;
-            margin-bottom: 20px;
-            padding: 0;
-            text-decoration: underline;
+            font: inherit;
+            font-weight: 700;
         }
 
-        .layout-cena {
-            display: flex;
-            gap: 30px;
-        }
-
-        .coluna-esquerda {
-            flex: 2;
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        .coluna-direita {
-            flex: 1;
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        .btn-acao {
-            background-color: #e74c3c;
+        .btn-voltar:hover { color: var(--tomato); }
+        .btn-acao, .btn-timer {
+            border: 0;
+            border-radius: 12px;
+            background: var(--tomato);
             color: white;
-            border: none;
-            padding: 15px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 8px;
             cursor: pointer;
-            width: 100%;
-            margin-top: 20px;
-            transition: background 0.3s;
+            font: inherit;
+            font-weight: 700;
+            transition: background .2s ease, transform .2s ease;
         }
 
-        .btn-acao:hover {
-            background-color: #c0392b;
+        .btn-acao { width: 100%; margin-top: 18px; padding: 14px 18px; }
+        .btn-timer { padding: 10px 16px; background: var(--green); }
+        .btn-acao:hover, .btn-timer:hover { transform: translateY(-1px); background: var(--green-dark); }
+        .layout-cozinha { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 20px; }
+        .layout-cozinha .coluna:nth-child(2) { grid-column: span 1; }
+        .checklist-item { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 13px; }
+        .checklist-item input { margin-top: 6px; accent-color: var(--green); }
+        .alerta { display: block; margin-top: 7px; padding: 7px 9px; border: 1px dashed #d9aa58; border-radius: 8px; background: #fff4db; color: #825a19; font-size: 12px; }
+        .cronometro { margin: 24px 0; color: var(--green); font-size: 48px; font-weight: 700; text-align: center; }
+        .passo { margin-bottom: 16px; line-height: 1.7; }
+        .recipe-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 20px; margin-top: 22px; }
+        .recipe-panel h3 { margin-top: 0; }
+        .recipe-steps { padding-left: 22px; }
+        .recipe-steps li { padding-left: 5px; margin-bottom: 12px; color: #50594e; }
+        .recipe-meta { display: flex; flex-wrap: wrap; gap: 9px; margin: 14px 0; }
+        .recipe-meta span { padding: 6px 10px; border-radius: 999px; background: #eff5eb; color: var(--green); font-size: 12px; font-weight: 700; }
+        .home-link { display: inline-block; margin-top: 22px; color: var(--tomato); font-weight: 700; text-decoration: none; }
+        .home-link:hover { text-decoration: underline; }
+
+        @media (max-width: 760px) {
+            header { position: static; align-items: flex-start; flex-direction: column; padding: 16px 20px; gap: 12px; }
+            .search-bar { width: 100%; }
+            .container { padding: 30px 18px 54px; }
+            .grid-estante { grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 14px; }
+            .card-filme { padding: 9px; border-radius: 14px; }
+            .card-filme img { height: 165px; }
+            .card-filme h3 { font-size: 17px; }
+            .layout-cena, .recipe-grid { grid-template-columns: 1fr; }
+            .layout-cozinha { grid-template-columns: 1fr; }
+            .layout-cozinha .coluna:nth-child(2) { grid-column: auto; }
+            .section-heading { align-items: flex-start; flex-direction: column; }
+            .coluna-esquerda, .coluna-direita, .coluna, .recipe-panel { padding: 18px; }
         }
 
-        .audio-pill {
-            background: #ecf0f1;
-            padding: 12px 20px;
-            border-radius: 30px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 20px;
-            cursor: pointer;
-        }
-
-        .audio-pill:hover {
-            background: #dfe6e9;
-        }
-
-        .layout-cozinha {
-            display: flex;
-            gap: 25px;
-            margin-top: 20px;
-        }
-
-        .coluna {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            flex: 1;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        .checklist-item {
-            margin-bottom: 12px;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-            font-size: 16px;
-        }
-
-        .alerta {
-            font-size: 12px;
-            color: #d35400;
-            background: #fdf3e7;
-            border: 1px dashed #e67e22;
-            padding: 3px 6px;
-            border-radius: 4px;
-            display: block;
-            margin-top: 5px;
-        }
-
-        .cronometro {
-            font-size: 56px;
-            font-weight: bold;
-            text-align: center;
-            margin: 30px 0;
-            color: #2c3e50;
-        }
-
-        .btn-timer {
-            background: #34495e;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .btn-timer:hover {
-            background: #2c3e50;
-        }
-
-        .passo {
-            margin-bottom: 20px;
-            line-height: 1.6;
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>🍲 Panela Mágica</h1>
+        <h1><a href="#tela1" onclick="navegar('tela1'); return false;" aria-label="Panela Mágica — voltar à tela inicial">🍲 Panela Mágica</a></h1>
         <div>
-            <input type="text" class="search-bar" placeholder="Buscar pratos e filmes...">
+            <input type="search" class="search-bar" placeholder="Buscar pratos e filmes..." aria-label="Buscar pratos e filmes">
         </div>
     </header>
 
     <div class="container">
         <div id="tela1" class="screen active">
             <span class="system-status">Status: na Estante</span>
-            <h2>A Estante dos Clássicos</h2>
-            <p>Selecione uma obra abaixo para explorar o contexto da receita e a magia da cena.</p>
-
-            <div class="grid-estante">
-                <div class="card-filme" onclick="navegar('tela2')">
-                    <img src="media/ratatouille-poster.svg" alt="Poster inspirado em Ratatouille">
-                    <h3>Ratatouille do Remy</h3>
-                </div>
-                <div class="card-filme" onclick="navegar('tela_bela_fera')">
-                    <img src="media/bela-fera-poster.svg" alt="Poster inspirado em A Bela e a Fera">
-                    <h3>Soufflé de Queijo</h3>
-                </div>
-                <div class="card-filme" onclick="navegar('tela_cinderela')">
-                    <img src="media/cinderela-poster.svg" alt="Poster inspirado em Cinderela">
-                    <h3>Abóbora Assada Mágica</h3>
-                </div>
+            <div class="home-intro">
+                <h2>A magia começa à mesa</h2>
+                <p>Receitas inspiradas por grandes histórias: escolha um filme para explorar sua cena ou abra uma receita para cozinhar.</p>
             </div>
+
+            <div class="section-heading">
+                <h2>Filmes e histórias</h2>
+                <p>Explore as cenas que despertam o apetite.</p>
+            </div>
+            <div class="grid-estante">
+                <a class="card-filme" href="#tela2" onclick="navegar('tela2'); return false;">
+                    <img src="media/ratatouille-poster.svg" alt="Ilustração original de Ratatouille e seu prato">
+                    <span class="card-tag">Pixar · França</span>
+                    <h3>Ratatouille do Remy</h3>
+                    <p>O prato que conquistou o crítico Anton Ego.</p>
+                </a>
+                <a class="card-filme" href="#tela_bela_fera" onclick="navegar('tela_bela_fera'); return false;">
+                    <img src="media/bela-fera-poster.svg" alt="Ilustração original de uma rosa encantada">
+                    <span class="card-tag">Disney · Castelo</span>
+                    <h3>Soufflé de Queijo</h3>
+                    <p>Uma receita delicada para um jantar encantado.</p>
+                </a>
+                <a class="card-filme" href="#tela_cinderela" onclick="navegar('tela_cinderela'); return false;">
+                    <img src="media/cinderela-poster.svg" alt="Ilustração original de uma abóbora e um sapatinho de cristal">
+                    <span class="card-tag">Disney · Conto de fadas</span>
+                    <h3>Abóbora Assada Mágica</h3>
+                    <p>Uma transformação mágica em prato de outono.</p>
+                </a>
+            </div>
+
+            <div class="section-heading">
+                <h2>Receitas para experimentar</h2>
+                <p>Abra uma receita para ver ingredientes e modo de preparo.</p>
+            </div>
+            <div class="grid-estante">
+                <a class="card-filme" href="#receita-beignets" onclick="navegar('receita-beignets'); return false;" data-search="beignets princesa e o sapo new orleans doce">
+                    <img src="media/beignets.svg" alt="Ilustração de beignets polvilhados com açúcar">
+                    <span class="card-tag">A Princesa e o Sapo · Doce</span>
+                    <h3>Beignets da Tiana</h3>
+                    <p>Quadradinhos fofos de massa frita com açúcar.</p>
+                </a>
+                <a class="card-filme" href="#receita-espaguete" onclick="navegar('receita-espaguete'); return false;" data-search="espaguete dama vagabundo lady tramp almôndegas massa">
+                    <img src="media/espaguete.svg" alt="Ilustração de espaguete com almôndegas">
+                    <span class="card-tag">A Dama e o Vagabundo · Massa</span>
+                    <h3>Espaguete com almôndegas</h3>
+                    <p>Um clássico italiano para compartilhar.</p>
+                </a>
+                <a class="card-filme" href="#receita-bolinho" onclick="navegar('receita-bolinho'); return false;" data-search="bolinho bao bao red panda red panda comida chinesa">
+                    <img src="media/bolinho.svg" alt="Ilustração de bolinhos chineses no vapor">
+                    <span class="card-tag">Bao · Cozinha asiática</span>
+                    <h3>Bolinho no vapor</h3>
+                    <p>Massa macia com recheio temperado.</p>
+                </a>
+            </div>
+            <p class="no-results" role="status">Não encontrei receitas ou filmes com esse termo. Tente outra busca.</p>
         </div>
 
         <div id="tela2" class="screen">
@@ -311,16 +304,15 @@
             </nav>
             <button class="btn-voltar" onclick="navegar('tela1')">← Voltar para a Estante</button>
 
-            <div style="width: 100%; margin-bottom: 20px;">
-                <video controls poster="media/ratatouille-scene-poster.svg" style="width: 100%; height: 450px; background: #000; border-radius: 8px;">
-                    Seu navegador não suporta a tag de vídeo.
-                </video>
+            <div class="scene-video-container" data-poster="media/ratatouille-scene-poster.svg">
+                <iframe class="scene-video" src="https://www.youtube-nocookie.com/embed/hMkcPy2RKek" title="Cena de Ratatouille: Anton Ego prova o ratatouille" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <a class="scene-source" href="https://www.youtube.com/watch?v=hMkcPy2RKek" target="_blank" rel="noopener noreferrer">Assistir no YouTube</a>
             </div>
 
             <div class="layout-cena">
                 <div class="coluna-esquerda">
                     <h1 style="margin-top:0;">Ratatouille do Remy</h1>
-                    <h3 style="color: #777; margin-top: -10px;">Filme: Ratatouille (2007)</h3>
+                    <h3 style="color: #777; margin-top: -10px;">Filme: <a class="movie-link" href="https://en.wikipedia.org/wiki/Ratatouille_(film)" target="_blank" rel="noopener noreferrer">Ratatouille (2007)</a></h3>
 
                     <p><strong>Contexto na Narrativa:</strong> Este é o exato momento em que o rigoroso crítico Anton Ego prova a receita camponesa preparada pelo rato Remy. Ao dar a primeira mordida, a caneta cai de sua mão e ele é transportado para as memórias afetivas de sua infância no interior da França.</p>
 
@@ -332,7 +324,7 @@
 
                 <div class="coluna-direita">
                     <div class="media-frame">
-                        <img src="media/ratatouille-prato.svg" alt="Prato ratatouille inspirado na obra">
+                        <img src="media/ratatouille-prato.svg" alt="Ilustração do prato de ratatouille">
                     </div>
                     <button class="btn-acao" onclick="navegar('tela3')">Ir para o Livro de Receitas</button>
                 </div>
@@ -399,6 +391,11 @@
             </nav>
             <button class="btn-voltar" onclick="navegar('tela1')">← Voltar para a Estante</button>
             <h2>Soufflé de Queijo</h2>
+            <p>Filme: <a class="movie-link" href="https://en.wikipedia.org/wiki/Beauty_and_the_Beast_(1991_film)" target="_blank" rel="noopener noreferrer">A Bela e a Fera (1991)</a></p>
+            <div class="scene-video-container" data-poster="media/bela-fera-scene.svg">
+                <iframe class="scene-video" src="https://www.youtube-nocookie.com/embed/wCXc5N6vBD4" title="Cena Be Our Guest de A Bela e a Fera" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <a class="scene-source" href="https://www.youtube.com/watch?v=wCXc5N6vBD4" target="_blank" rel="noopener noreferrer">Assistir no YouTube</a>
+            </div>
             <p>Uma receita que remete ao universo encantado da casa do castelo, com a mesma lógica de associação afetiva e memória sensorial do Ratatouille.</p>
             <button class="btn-acao" onclick="navegar('tela3')">Retornar à cozinha do Ratatouille</button>
         </div>
@@ -409,8 +406,103 @@
             </nav>
             <button class="btn-voltar" onclick="navegar('tela1')">← Voltar para a Estante</button>
             <h2>Abóbora Assada Mágica</h2>
+            <p>Filme: <a class="movie-link" href="https://en.wikipedia.org/wiki/Cinderella_(1950_film)" target="_blank" rel="noopener noreferrer">Cinderela (1950)</a></p>
+            <div class="scene-video-container" data-poster="media/cinderela-scene.svg">
+                <iframe class="scene-video" src="https://www.youtube-nocookie.com/embed/A1pYDLxyIOg" title="Cena de Cinderela: transformação da abóbora em carruagem" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <a class="scene-source" href="https://www.youtube.com/watch?v=A1pYDLxyIOg" target="_blank" rel="noopener noreferrer">Assistir no YouTube</a>
+            </div>
             <p>A transformação do objeto comum em alimento imaginário, criando uma ponte entre fantasia e memória culinária, em um elo associativo com a narrativa do Ratatouille.</p>
             <button class="btn-acao" onclick="navegar('tela3')">Retornar à cozinha do Ratatouille</button>
+        </div>
+
+        <div id="receita-beignets" class="screen">
+            <nav class="breadcrumbs"><a href="#tela1" onclick="navegar('tela1'); return false;">Início</a> &gt; Beignets da Tiana</nav>
+            <button class="btn-voltar" onclick="navegar('tela1')">← Voltar à Estante</button>
+            <span class="system-status">Receita doce · Rende 12 unidades</span>
+            <h2>Beignets da Tiana</h2>
+            <p>Inspirados nos doces macios e dourados associados à cozinha de Nova Orleans em <a class="movie-link" href="https://en.wikipedia.org/wiki/The_Princess_and_the_Frog" target="_blank" rel="noopener noreferrer">A Princesa e o Sapo</a>.</p>
+            <div class="recipe-meta"><span>Preparo: 25 min</span><span>Descanso: 1 h 30 min</span><span>Fritura: 15 min</span></div>
+            <div class="recipe-grid">
+                <section class="recipe-panel">
+                    <h3>Ingredientes</h3>
+                    <div class="checklist-item"><input type="checkbox"> 240 ml de leite morno</div>
+                    <div class="checklist-item"><input type="checkbox"> 7 g de fermento biológico seco</div>
+                    <div class="checklist-item"><input type="checkbox"> 50 g de açúcar</div>
+                    <div class="checklist-item"><input type="checkbox"> 1 ovo e 30 g de manteiga derretida</div>
+                    <div class="checklist-item"><input type="checkbox"> 400 g de farinha de trigo e 1 pitada de sal</div>
+                    <div class="checklist-item"><input type="checkbox"> Óleo para fritar e açúcar de confeiteiro para servir</div>
+                </section>
+                <section class="recipe-panel">
+                    <h3>Modo de preparo</h3>
+                    <ol class="recipe-steps">
+                        <li>Misture o leite, o fermento e o açúcar. Aguarde 5 minutos; acrescente o ovo e a manteiga.</li>
+                        <li>Adicione a farinha e o sal aos poucos. Sove até obter uma massa macia e deixe crescer coberta até dobrar de volume.</li>
+                        <li>Abra a massa com cerca de 1 cm de espessura e corte em quadrados.</li>
+                        <li>Frite poucos por vez em óleo a 175 °C, virando para dourar dos dois lados. Escorra e polvilhe açúcar de confeiteiro.</li>
+                    </ol>
+                </section>
+            </div>
+            <a class="home-link" href="#tela1" onclick="navegar('tela1'); return false;">← Voltar para a tela inicial</a>
+        </div>
+
+        <div id="receita-espaguete" class="screen">
+            <nav class="breadcrumbs"><a href="#tela1" onclick="navegar('tela1'); return false;">Início</a> &gt; Espaguete com almôndegas</nav>
+            <button class="btn-voltar" onclick="navegar('tela1')">← Voltar à Estante</button>
+            <span class="system-status">Prato principal · Serve 4 pessoas</span>
+            <h2>Espaguete com almôndegas</h2>
+            <p>Uma receita para compartilhar, inspirada pelo jantar de <a class="movie-link" href="https://en.wikipedia.org/wiki/Lady_and_the_Tramp" target="_blank" rel="noopener noreferrer">A Dama e o Vagabundo</a>.</p>
+            <div class="recipe-meta"><span>Preparo: 25 min</span><span>Cozimento: 30 min</span><span>Serve: 4</span></div>
+            <div class="recipe-grid">
+                <section class="recipe-panel">
+                    <h3>Ingredientes</h3>
+                    <div class="checklist-item"><input type="checkbox"> 400 g de espaguete</div>
+                    <div class="checklist-item"><input type="checkbox"> 400 g de carne moída</div>
+                    <div class="checklist-item"><input type="checkbox"> 1 ovo, 3 colheres de farinha de rosca e 2 de parmesão</div>
+                    <div class="checklist-item"><input type="checkbox"> 1 cebola pequena e 2 dentes de alho picados</div>
+                    <div class="checklist-item"><input type="checkbox"> 700 g de tomate pelado, azeite e manjericão</div>
+                    <div class="checklist-item"><input type="checkbox"> Sal, pimenta e parmesão para finalizar</div>
+                </section>
+                <section class="recipe-panel">
+                    <h3>Modo de preparo</h3>
+                    <ol class="recipe-steps">
+                        <li>Misture a carne, o ovo, a farinha de rosca, o parmesão e metade do alho. Tempere e modele as almôndegas.</li>
+                        <li>Doure as almôndegas no azeite e reserve. Na mesma panela, refogue a cebola e o restante do alho.</li>
+                        <li>Junte o tomate, tempere e cozinhe por 15 minutos. Volte as almôndegas ao molho e cozinhe por mais 10 minutos.</li>
+                        <li>Cozinhe o espaguete em água salgada até ficar al dente. Sirva com o molho, manjericão e parmesão.</li>
+                    </ol>
+                </section>
+            </div>
+            <a class="home-link" href="#tela1" onclick="navegar('tela1'); return false;">← Voltar para a tela inicial</a>
+        </div>
+
+        <div id="receita-bolinho" class="screen">
+            <nav class="breadcrumbs"><a href="#tela1" onclick="navegar('tela1'); return false;">Início</a> &gt; Bolinho no vapor</nav>
+            <button class="btn-voltar" onclick="navegar('tela1')">← Voltar à Estante</button>
+            <span class="system-status">Cozinha asiática · Rende 12 unidades</span>
+            <h2>Bolinho no vapor</h2>
+            <p>Uma receita caseira de bolinhos recheados inspirada pelo curta <a class="movie-link" href="https://en.wikipedia.org/wiki/Bao_(film)" target="_blank" rel="noopener noreferrer">Bao</a>.</p>
+            <div class="recipe-meta"><span>Preparo: 35 min</span><span>Descanso: 1 h</span><span>Vapor: 12 min</span></div>
+            <div class="recipe-grid">
+                <section class="recipe-panel">
+                    <h3>Ingredientes</h3>
+                    <div class="checklist-item"><input type="checkbox"> 250 g de farinha de trigo</div>
+                    <div class="checklist-item"><input type="checkbox"> 150 ml de água morna e 1 colher de chá de fermento biológico seco</div>
+                    <div class="checklist-item"><input type="checkbox"> 250 g de cogumelos picados</div>
+                    <div class="checklist-item"><input type="checkbox"> 2 cebolinhas e 1 dente de alho</div>
+                    <div class="checklist-item"><input type="checkbox"> 1 colher de sopa de molho de soja e 1 colher de chá de óleo de gergelim</div>
+                    <div class="checklist-item"><input type="checkbox"> Sal, pimenta e óleo para refogar</div>
+                </section>
+                <section class="recipe-panel">
+                    <h3>Modo de preparo</h3>
+                    <ol class="recipe-steps">
+                        <li>Misture a água, o fermento e a farinha. Sove por 8 minutos e deixe a massa descansar coberta por 1 hora.</li>
+                        <li>Refogue os cogumelos, o alho e a cebolinha. Tempere com molho de soja, óleo de gergelim e pimenta; deixe esfriar.</li>
+                        <li>Divida a massa em 12 porções, abra discos e coloque uma colher de recheio no centro. Feche e acomode sobre quadrados de papel-manteiga.</li>
+                        <li>Deixe crescer por 15 minutos e cozinhe no vapor, com espaço entre os bolinhos, por cerca de 12 minutos.</li>
+                    </ol>
+                </section>
+            </div>
+            <a class="home-link" href="#tela1" onclick="navegar('tela1'); return false;">← Voltar para a tela inicial</a>
         </div>
     </div>
 
@@ -423,6 +515,64 @@
                 telaAlvo.classList.add('active');
             }
             window.scrollTo(0, 0);
+        }
+
+        const busca = document.querySelector('.search-bar');
+        const cardsEstante = document.querySelectorAll('#tela1 .card-filme');
+        const avisoBusca = document.querySelector('.no-results');
+
+        busca.addEventListener('input', function() {
+            const termo = this.value.trim().toLocaleLowerCase('pt-BR');
+            let cardsVisiveis = 0;
+
+            cardsEstante.forEach(card => {
+                const conteudo = `${card.textContent} ${card.dataset.search || ''}`.toLocaleLowerCase('pt-BR');
+                const corresponde = conteudo.includes(termo);
+                card.hidden = !corresponde;
+                if (corresponde) cardsVisiveis++;
+            });
+
+            avisoBusca.style.display = cardsVisiveis ? 'none' : 'block';
+        });
+
+        busca.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                navegar('tela1');
+                document.querySelector('#tela1 .section-heading').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        if (window.location.protocol === 'file:') {
+            document.querySelectorAll('.scene-video').forEach(player => {
+                const container = player.closest('.scene-video-container');
+                const videoId = new URL(player.src).pathname.split('/').pop();
+                const preview = document.createElement('a');
+                const thumbnail = document.createElement('img');
+                const label = document.createElement('span');
+                const aviso = document.createElement('p');
+
+                preview.className = 'scene-preview';
+                preview.href = `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`;
+                preview.target = '_blank';
+                preview.rel = 'noopener noreferrer';
+                preview.setAttribute('aria-label', `Assistir no YouTube: ${player.title}`);
+
+                thumbnail.src = `https://i.ytimg.com/vi/${encodeURIComponent(videoId)}/hqdefault.jpg`;
+                thumbnail.alt = `Prévia da cena: ${player.title}`;
+                thumbnail.onerror = () => {
+                    thumbnail.onerror = null;
+                    thumbnail.src = container.dataset.poster;
+                };
+
+                label.className = 'scene-preview-label';
+                label.textContent = '▶ Assistir cena no YouTube';
+                aviso.className = 'scene-local-notice';
+                aviso.textContent = 'Para reproduzir a cena nesta página, abra o site pelo Live Server ou pelo GitHub Pages.';
+
+                preview.append(thumbnail, label);
+                player.replaceWith(preview);
+                container.append(aviso);
+            });
         }
 
         const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');

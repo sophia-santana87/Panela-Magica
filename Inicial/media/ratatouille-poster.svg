@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 850" role="img" aria-labelledby="title desc">
+  <title id="title">Ratatouille do Remy</title>
+  <desc id="desc">Ilustração original de um prato colorido em uma cozinha parisiense.</desc>
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#17324d"/><stop offset="1" stop-color="#432b2b"/></linearGradient>
+    <linearGradient id="plate" x2="0" y2="1"><stop stop-color="#fff7de"/><stop offset="1" stop-color="#d9c7a4"/></linearGradient>
+    <radialGradient id="dish"><stop stop-color="#e6a44c"/><stop offset=".72" stop-color="#a94732"/><stop offset="1" stop-color="#612d2b"/></radialGradient>
+  </defs>
+  <rect width="600" height="850" fill="url(#bg)"/>
+  <circle cx="480" cy="120" r="100" fill="#f3c777" opacity=".12"/>
+  <path d="M0 500 Q130 450 250 510T600 480V850H0Z" fill="#171f2b" opacity=".7"/>
+  <ellipse cx="300" cy="470" rx="205" ry="150" fill="url(#plate)"/>
+  <ellipse cx="300" cy="455" rx="152" ry="105" fill="url(#dish)"/>
+  <g fill="none" stroke-linecap="round" stroke-width="34">
+    <path d="M210 428Q275 365 350 420" stroke="#6b9148"/>
+    <path d="M190 475Q270 410 365 474" stroke="#ddb04f"/>
+    <path d="M225 515Q300 450 390 510" stroke="#94423b"/>
+    <path d="M260 385Q327 440 385 400" stroke="#5f7e43"/>
+    <path d="M195 448Q280 510 355 445" stroke="#cf6752"/>
+  </g>
+  <path d="M235 330q-15-78 25-98 42-21 64 9l22 91" fill="#8b5b42"/>
+  <circle cx="274" cy="279" r="9" fill="#f5d5a5"/><circle cx="320" cy="278" r="9" fill="#f5d5a5"/>
+  <path d="M270 225q-5-61 25-67 34-6 31 62" fill="#fff5df" stroke="#d6c9ae" stroke-width="7"/>
+  <text x="300" y="670" text-anchor="middle" fill="#fff7e7" font-family="Georgia,serif" font-size="54" font-weight="bold">RATATOUILLE</text>
+  <text x="300" y="720" text-anchor="middle" fill="#e8bd76" font-family="Arial,sans-serif" font-size="22" letter-spacing="5">SABORES DE PARIS</text>
+</svg>

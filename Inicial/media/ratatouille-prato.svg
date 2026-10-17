@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Prato de ratatouille</title>
+  <desc id="desc">Ilustração original de legumes coloridos dispostos em espiral.</desc>
+  <defs><radialGradient id="bg"><stop stop-color="#fff7e8"/><stop offset="1" stop-color="#d9c6a5"/></radialGradient></defs>
+  <rect width="600" height="360" rx="18" fill="#263b49"/>
+  <ellipse cx="300" cy="185" rx="225" ry="145" fill="url(#bg)"/>
+  <ellipse cx="300" cy="178" rx="166" ry="101" fill="#ac4735"/>
+  <g fill="none" stroke-width="35" stroke-linecap="round">
+    <path d="M198 156q65-61 134 0" stroke="#718c4e"/><path d="M184 193q88-71 183 0" stroke="#d6a849"/>
+    <path d="M215 229q75-63 174 0" stroke="#783a35"/><path d="M260 132q67 60 131 0" stroke="#668443"/>
+  </g>
+</svg>

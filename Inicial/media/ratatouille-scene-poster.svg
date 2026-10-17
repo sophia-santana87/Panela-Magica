@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 450" role="img" aria-labelledby="title desc">
+  <title id="title">A cena do crítico provando ratatouille</title>
+  <desc id="desc">Ilustração original de um prato de ratatouille servido à mesa de um restaurante.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#263e50"/><stop offset="1" stop-color="#7b4434"/></linearGradient>
+    <radialGradient id="plate"><stop stop-color="#fbf0d5"/><stop offset=".78" stop-color="#e4d4b6"/><stop offset=".8" stop-color="#a78b67"/><stop offset="1" stop-color="#f4e9d2"/></radialGradient>
+  </defs>
+  <rect width="1200" height="450" fill="url(#bg)"/>
+  <path d="M0 335Q300 300 600 344t600-2v108H0Z" fill="#241c20" opacity=".7"/>
+  <ellipse cx="600" cy="241" rx="230" ry="165" fill="url(#plate)"/>
+  <ellipse cx="600" cy="225" rx="166" ry="112" fill="#b74c37"/>
+  <g fill="none" stroke-width="34" stroke-linecap="round">
+    <path d="M492 190q74-59 151 0" stroke="#657f48"/><path d="M480 230q79-63 166 0" stroke="#d7aa53"/>
+    <path d="M500 269q83-66 169 0" stroke="#804138"/><path d="M535 168q60 59 122 0" stroke="#92a35b"/>
+  </g>
+  <circle cx="1070" cy="88" r="36" fill="#efc77b" opacity=".85"/>
+  <text x="70" y="95" fill="#fff3dc" font-family="Georgia,serif" font-size="42">UMA LEMBRANÇA EM CADA MORDIDA</text>
+  <text x="70" y="146" fill="#f3cf89" font-family="Arial,sans-serif" font-size="22" letter-spacing="4">CENA DO FILME RATATOUILLE</text>
+</svg>

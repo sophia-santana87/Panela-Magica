@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 480" role="img" aria-labelledby="title desc">
+  <title id="title">Espaguete com almôndegas</title>
+  <desc id="desc">Ilustração original de um prato de espaguete ao molho com almôndegas e manjericão.</desc>
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#f6dfb8"/><stop offset="1" stop-color="#d0a675"/></linearGradient><radialGradient id="plate"><stop stop-color="#fff9ec"/><stop offset="1" stop-color="#e9d9be"/></radialGradient></defs>
+  <rect width="700" height="480" fill="url(#bg)"/>
+  <ellipse cx="350" cy="305" rx="250" ry="140" fill="url(#plate)"/>
+  <ellipse cx="350" cy="292" rx="184" ry="96" fill="#bd5139"/>
+  <g fill="none" stroke="#f5d58d" stroke-width="12" stroke-linecap="round">
+    <path d="M222 282q65-52 126 4t120-6"/><path d="M220 308q70-45 126 8t127-8"/>
+    <path d="M244 257q80 45 140-2t88 10"/><path d="M254 329q64-48 128 0t94-4"/>
+  </g>
+  <g fill="#7e342e" stroke="#e08a53" stroke-width="5"><circle cx="276" cy="278" r="31"/><circle cx="375" cy="312" r="34"/><circle cx="438" cy="268" r="29"/></g>
+  <g fill="#66824c"><path d="M327 239q-6-35 20-39 8 23-20 39m5 1q22-34 44-16-8 26-44 16"/><path d="M458 318q-7-31 17-37 7 22-17 37"/></g>
+  <text x="350" y="83" text-anchor="middle" fill="#315b43" font-family="Georgia,serif" font-size="41" font-weight="bold">UM JANTAR A DOIS</text>
+  <text x="350" y="126" text-anchor="middle" fill="#7b4832" font-family="Arial,sans-serif" font-size="18" letter-spacing="4">ESPAGUETE COM ALMÔNDEGAS</text>
+</svg>
